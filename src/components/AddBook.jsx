@@ -1,20 +1,191 @@
-import React from "react";
+import React, { use, useState } from "react";
+import "./style.css";
 
 /**
  * A book should have the following fields:
- * - title (required)
- * - author (required)
- * - image (optional, url)
- * - publishedDate (optional, datetime)
- * - description (optional, text)
- * - rating (number, 1-5)
- * - category (optional, dropdown with options: fiction, non-fiction, poetry, drama, biography, history, science, technology, art, music, travel, cooking, gardening, etc.)
- * - isRead (boolean, default false)
- * - isFavorite (boolean, default false)
+ * + title (required) 
+ * + author (required)
+ * + image (optional, url)
+ * + publishedDate (optional, datetime)
+ * + description (optional, text)
+ * FIX - rating (number, 1-5)
+ * + category (optional, dropdown with options: fiction, non-fiction, poetry, drama, biography, history, science, technology, art, music, travel, cooking, gardening, etc.)
+ * + isRead (boolean, default false)
+ * + isFavorite (boolean, default false)
  */
 
-const AddBook = () => {
-  return <div>AddBook</div>;
+const AddBook = ({ appendBook }) => {
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [rating, setRating] = useState("0");
+  const [image, setImage] = useState("");
+  const [published, setPublished] = useState("");
+  const [description,setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [isRead, setIsRead] = useState(false);
+  const [isFav, setIsFav] = useState(false);
+  const [titleErrors, setTitleErrors] = useState([]);
+  const [dirty, setDirty] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("title", title);
+    appendBook(title,author,rating,image,published,description,category);
+    clearForm();
+  };
+
+  const handleTitleChange = (event) => {
+    setDirty(true);
+    // Let's make sure the title has at least 4 characters in it
+    setTitle(event.target.value);
+    if (title.length < 4) {
+      setTitleErrors(["title must have at least 4 characters"]);
+    } else {
+      setTitleErrors([]);
+    }
+  };
+
+  const handleAuthorChange = (event) => {
+    setDirty(true);
+    setAuthor(event.target.value);
+  }
+
+  const handleRatingChange = (event) => {
+    setDirty(true);
+    //console.log(event.target.value);
+    setRating(event.target.value);
+  }
+
+  const handleImageChange = (e) => {
+    setDirty(true);
+    setImage(e.target.value);
+  }
+
+  const handleDateChange = (e) => {
+    setDirty(true);
+    setPublished(e.target.value);
+  }
+
+  const handleDescriptionChange = (e) => {
+    setDirty(true);
+    setDescription(e.target.value);
+  }
+
+  const handleCategoryChange = (e) => {
+    setDirty(true);
+    setCategory(e.target.value);
+  }
+
+  const handleReadChange = (e) => {
+    setDirty(true);
+    if (e.target.value === "yes"){
+      setIsRead(true);
+    }
+  }
+
+  const handleFavChange = (e) => {
+    setDirty(true);
+    if (e.target.value === "yes"){
+      setIsFav(true);
+    }
+  }
+
+  const clearForm = () => {
+    setTitle("");
+    setAuthor("");
+    setRating("0");
+    setImage("");
+    setPublished("");
+    setDescription("");
+    setCategory("");
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="new-book-form">
+      <input
+        name="title"
+        type="text"
+        required
+        placeholder="Title"
+        value={title}
+        onChange={handleTitleChange}
+      />
+      <input 
+        name= "author"
+        type="text" 
+        required
+        placeholder="Author"
+        value={author}
+        onChange={handleAuthorChange}
+      />
+      <input 
+        name= "image"
+        type="url"
+        placeholder="Image URL"
+        value={image}
+        onChange={handleImageChange}
+      />
+      <input 
+        name= "published"
+        type="date"
+        value={published}
+        onChange={handleDateChange}
+      />
+      <input 
+        name= "description"
+        type="text"
+        value={description}
+        onChange={handleDescriptionChange}
+      />
+      <select
+        name = "rating"
+        onChange={handleRatingChange}
+      >
+          <option value="0" disabled>Select Rating</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+      </select>
+      <select name="category" onChange={handleCategoryChange}>
+        <option value="Fiction">Fiction</option>
+        <option value="Non-fiction">Non-fiction</option>
+        <option value="Poetry">Poetry</option>
+        <option value="Drama">Drama</option>
+        <option value="Biography">Biography</option>
+        <option value="History">History</option>
+        <option value="Science">Science</option>
+      </select>
+      {/*<label>Read?</label>
+      <input
+        name= "isRead"
+        type="checkbox"
+        value={isRead}
+        onChange={handleReadChange}
+      />*/}
+      <label>
+      <input type="radio" name="isRead" value={isRead} onChange={handleReadChange}/>
+        Read?
+      </label>
+      <label>
+      <input type="radio" name="isRead" value={isFav} onChange={handleFavChange}/>
+        Favorite?
+      </label>
+      {/*<input
+        name= "isFav"
+        type="checkbox"
+        value={isFav}
+        onChange={handleFavChange}
+      />*/}
+      {titleErrors.map((error) => (
+        <p className="error" key={error}>
+          {error}
+        </p>
+      ))}
+      <button disabled={titleErrors.length > 0 || !dirty}>Create Book</button>
+    </form>
+  );
 };
 
 export default AddBook;
