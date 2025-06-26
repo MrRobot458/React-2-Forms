@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import AddBook from "./components/AddBook";
 import BookList from "./components/BookList";
-import BookCard from "./components/BookCard";
 import "./style.css";
 
 const App = () => {
@@ -48,7 +47,7 @@ const App = () => {
         "The Republic by Plato is a text that describes the importance of being just in the world, and by being just, one is happy. It describes an ideal city and a way through which a just and philosophical governance can create happiness."
     }
   ];
-  
+
   const [books, setBooks] = useState(initialBooksState);
 
   const appendBook = (newBookTitle, newAuthor, newRating, newImage, newDate, newDescrip, newCat, newRead, newFav) => {
@@ -64,8 +63,10 @@ const App = () => {
       isRead: newRead,
       isFav: newFav
     };
+
     setBooks([...books, newBook]);
   };
+
   return (
     <div className="app">
       <h1 className="title">Book Reviews 📝</h1>

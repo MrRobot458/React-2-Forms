@@ -1,12 +1,11 @@
 import React from "react";
-import BookCard
- from "./BookCard";
-const BookList = ({books}) => {
+import BookCard from "./BookCard";
 
-  return ( 
-  <>
-   <BookCard books={books}/>
-  </>
+const BookList = ({ books }) => {
+  return (
+    <div>
+      <BookCard books={books} />
+    </div>
   );
 };
 

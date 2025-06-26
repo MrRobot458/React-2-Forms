@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import "./style.css";
 
-/**
+/*
  * A book should have the following fields:
- * + title (required) 
- * + author (required)
- * + image (optional, url)
- * + publishedDate (optional, datetime)
- * + description (optional, text)
- * FIX - rating (number, 1-5)
- * + category (optional, dropdown with options: fiction, non-fiction, poetry, drama, biography, history, science, technology, art, music, travel, cooking, gardening, etc.)
- * + isRead (boolean, default false)
- * + isFavorite (boolean, default false)
+ *   ✅ title (required) 
+ *   ✅ author (required)
+ *   ✅ image (optional, url)
+ *   ✅ publishedDate (optional, datetime)
+ *   ✅ description (optional, text)
+ *   🟨 rating (number, 1-5)
+ *   🟨 category (optional, dropdown with options: fiction, non-fiction, poetry, drama, biography, history, science, etc.)
+ *   ✅ isRead (boolean, default false)
+ *   ✅ isFavorite (boolean, default false)
  */
 
 const AddBook = ({ appendBook }) => {
@@ -30,13 +30,14 @@ const AddBook = ({ appendBook }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("title", title);
-    appendBook(title,author,rating,image,published,description,category,isRead,isFav);
+    appendBook(title, author, rating, image, published, description, category, isRead, isFav);
     clearForm();
   };
 
   const handleTitleChange = (event) => {
     setDirty(true);
     setTitle(event.target.value);
+
     // Let's make sure the title has at least 4 characters in it
     if (title.length < 4) {
       setTitleErrors(["title must have at least 4 characters"]);
@@ -54,9 +55,11 @@ const AddBook = ({ appendBook }) => {
     setDirty(true);
     let stars = "☆☆☆☆☆";
     let starArray = stars.split("");
-    for (let i = 0; i < parseInt(event.target.value); i++){
+
+    for (let i = 0; i < parseInt(event.target.value); i++) {
       starArray[i] = "★";
     }
+
     setRating(starArray.join(""));
   }
 
@@ -140,16 +143,13 @@ const AddBook = ({ appendBook }) => {
         placeholder="Description..."
         onChange={handleDescriptionChange}
       />
-      <select
-        name = "rating"
-        onChange={handleRatingChange}
-      >
-          <option value="0">Select Rating</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+      <select name="rating" onChange={handleRatingChange}>
+        <option value="0">Select Rating</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
       </select>
       <select name="category" onChange={handleCategoryChange}>
         <option value="">Select Genre</option>
@@ -161,22 +161,20 @@ const AddBook = ({ appendBook }) => {
         <option value="History">History</option>
         <option value="Science">Science</option>
       </select>
-
       <label>
-      Have you read this before?
-      <input type="checkbox" name="isRead" checked={isRead} onChange={handleReadChange}/>
+        Have you read this before?
+        <input type="checkbox" name="isRead" checked={isRead} onChange={handleReadChange} />
       </label>
       <label>
-      Is this your favorite?
-      <input type="checkbox" name="isFav" checked={isFav} onChange={handleFavChange}/>
+        Is this your favorite?
+        <input type="checkbox" name="isFav" checked={isFav} onChange={handleFavChange} />
       </label>
 
       {titleErrors.map((error) => (
-        <p className="error" key={error}>
-          {error}
-        </p>
+        <p className="error" key={error}>{error}</p>
       ))}
-      <button disabled={titleErrors.length > 0 || !dirty}>Add Book</button>
+
+      <button id="submit-button" disabled={titleErrors.length > 0 || !dirty}>Add Book</button>
     </form>
   );
 };

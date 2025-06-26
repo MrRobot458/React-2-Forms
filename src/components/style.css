@@ -1,31 +1,38 @@
+img {
+  width: 150px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+ul {
+  list-style-type: none;
+}
+
 .new-book-form * {
   color: #b7aeae;
 }
 
-  .error {
-    color: red;
-  }
+.error {
+  color: red;
+}
 
-  img {
-    width: 150px;
-    height: 220px;    
-    object-fit: cover; 
-    border-radius: 8px;
-  }
+.book-card {
+  max-width: 400px;
+  /* limit the card width */
+  padding: 1rem;
+  border-radius: 8px;
+}
 
-  .book-card {
-    max-width: 400px; /* limit the card width */
-    padding: 1rem;
-    border-radius: 8px;
-  }
+.book-list {
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
 
-  .book-list {
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 1rem;
-  }
-
-  ul{
-    list-style-type: none;
-  }
+#submit-button {
+  border-radius: 4px;
+  background-color: #0059ff;
+  color: white;
+}
