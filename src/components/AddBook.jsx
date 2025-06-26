@@ -109,7 +109,7 @@ const AddBook = ({ appendBook }) => {
         placeholder="Title"
         value={title}
         onChange={handleTitleChange}
-      />
+      /> 
       <input 
         name= "author"
         type="text" 
@@ -117,7 +117,8 @@ const AddBook = ({ appendBook }) => {
         placeholder="Author"
         value={author}
         onChange={handleAuthorChange}
-      />
+      /> 
+      <br/>
       <input 
         name= "image"
         type="url"
@@ -125,18 +126,21 @@ const AddBook = ({ appendBook }) => {
         value={image}
         onChange={handleImageChange}
       />
+      <br/>
       <input 
         name= "published"
         type="date"
         value={published}
         onChange={handleDateChange}
       />
-      <input 
+      <br/>
+      <textarea
         name= "description"
-        type="text"
         value={description}
+        placeholder="Description"
         onChange={handleDescriptionChange}
-      />
+      ></textarea>
+      <br/>
       <select
         name = "rating"
         onChange={handleRatingChange}
@@ -148,6 +152,7 @@ const AddBook = ({ appendBook }) => {
           <option value="4">4</option>
           <option value="5">5</option>
       </select>
+      <br/>
       <select name="category" onChange={handleCategoryChange}>
         <option value="Fiction">Fiction</option>
         <option value="Non-fiction">Non-fiction</option>
@@ -157,6 +162,7 @@ const AddBook = ({ appendBook }) => {
         <option value="History">History</option>
         <option value="Science">Science</option>
       </select>
+      <br/>
       {/*<label>Read?</label>
       <input
         name= "isRead"
@@ -183,6 +189,7 @@ const AddBook = ({ appendBook }) => {
           {error}
         </p>
       ))}
+      <br/>
       <button disabled={titleErrors.length > 0 || !dirty}>Create Book</button>
     </form>
   );
