@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
-import "./style.css";
 import AddBook from "./components/AddBook";
 import BookList from "./components/BookList";
 import BookCard from "./components/BookCard";
@@ -31,7 +30,7 @@ const App = () => {
     <div className="app">
       <h1 className="title">React Forms! 📝</h1>
       <AddBook appendBook={appendBook} />
-      <BookList books={books}/>
+      <BookList books={books} />
     </div>
   );
 };
