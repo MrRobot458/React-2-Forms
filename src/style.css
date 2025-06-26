@@ -6,11 +6,11 @@
 }
 
 body {
-  background-color: #160f29;
+  background-color: #19122d;
+  color: #ffffff;
 }
 
 .title {
-  color: #ffffff;
   font-size: 3rem;
   font-weight: 700;
   text-align: center;
@@ -25,9 +25,6 @@ body {
   min-height: 100vh;
 }
 
-.app * {
-  color: #ffffff;
-}
 
 .gif-card {
   width: 200px;

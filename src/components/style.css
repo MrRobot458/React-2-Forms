@@ -1,9 +1,31 @@
 .new-book-form * {
-    color: #dfd5d5;
+    color: #000000;
   }
   
   .error {
     color: red;
   }
 
-  
+  img {
+    width: 150px;
+    height: 220px;    
+    object-fit: cover; 
+    border-radius: 8px;
+  }
+
+  .book-card {
+    max-width: 400px; /* limit the card width */
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .book-list {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1rem;
+  }
+
+  ul{
+    list-style-type: none;
+  }
