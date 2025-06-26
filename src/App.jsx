@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import AddBook from "./components/AddBook";
 import BookList from "./components/BookList";
 import BookCard from "./components/BookCard";
+import "./style.css";
 
 const App = () => {
   const initialBooksState = [

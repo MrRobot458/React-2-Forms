@@ -163,11 +163,11 @@ const AddBook = ({ appendBook }) => {
       </select>
 
       <label>
-      Read?
+      Have you read this before?
       <input type="checkbox" name="isRead" checked={isRead} onChange={handleReadChange}/>
       </label>
       <label>
-      Favorite?
+      Is this your favorite?
       <input type="checkbox" name="isFav" checked={isFav} onChange={handleFavChange}/>
       </label>
 
