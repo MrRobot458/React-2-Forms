@@ -137,17 +137,22 @@ const AddBook = ({ appendBook }) => {
         name="description"
         type="text"
         value={description}
+        placeholder="Description..."
         onChange={handleDescriptionChange}
       />
-      <select name="rating" onChange={handleRatingChange}>
-        <option value="0" disabled>Select Rating</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
+      <select
+        name = "rating"
+        onChange={handleRatingChange}
+      >
+          <option value="0">Select Rating</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
       </select>
       <select name="category" onChange={handleCategoryChange}>
+        <option value="">Select Genre</option>
         <option value="Fiction">Fiction</option>
         <option value="Non-fiction">Non-fiction</option>
         <option value="Poetry">Poetry</option>
@@ -156,13 +161,7 @@ const AddBook = ({ appendBook }) => {
         <option value="History">History</option>
         <option value="Science">Science</option>
       </select>
-      {/*<label>Read?</label>
-      <input
-        name= "isRead"
-        type="checkbox"
-        value={isRead}
-        onChange={handleReadChange}
-      />*/}
+
       <label>
       Read?
       <input type="checkbox" name="isRead" checked={isRead} onChange={handleReadChange}/>
@@ -171,18 +170,13 @@ const AddBook = ({ appendBook }) => {
       Favorite?
       <input type="checkbox" name="isFav" checked={isFav} onChange={handleFavChange}/>
       </label>
-      {/*<input
-        name= "isFav"
-        type="checkbox"
-        value={isFav}
-        onChange={handleFavChange}
-      />*/}
+
       {titleErrors.map((error) => (
         <p className="error" key={error}>
           {error}
         </p>
       ))}
-      <button disabled={titleErrors.length > 0 || !dirty}>Create Book</button>
+      <button disabled={titleErrors.length > 0 || !dirty}>Add Book</button>
     </form>
   );
 };

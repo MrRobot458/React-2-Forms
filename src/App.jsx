@@ -5,11 +5,50 @@ import BookList from "./components/BookList";
 import BookCard from "./components/BookCard";
 
 const App = () => {
-  {/*const initialBooksState = [{ id: 1, title: "Babel", author: "person", rating: 2, category: "Poetry" },
-    { id: 2, category: "Poetry", title: "House of the Spirits", author: "person", rating: 2, category: "Poetry" },
-    { id: 3, title: "100 Years of Solitude", author: "person", rating: 2, category: "Poetry" },
-    { id: 4, title: "Pride and Prejudice", author: "person", rating: 2, category: "Poetry" },];*/}
-  const [books, setBooks] = useState([]);
+  const initialBooksState = [
+    {
+      id: 1,
+      title: "Siddartha",
+      author: "Herman Hesse",
+      rating: "★★★★☆",
+      category: "Fiction",
+      image: "https://images.penguinrandomhouse.com/cover/9780142437186",
+      description:
+        "Set in ancient India, the novel follows Siddhartha, a young Brahmin, who renounces conventional life and undergoes a series of profound experiences—from asceticism and sensual pleasure to worldly success and eventual stillness by the river."
+    },
+    {
+      id: 2,
+      title: "Things Fall Apart",
+      author: "Chinua Achebe",
+      rating: "★★★★☆",
+      category: "Fiction",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtn5aof5WIwFN6Eofs8sFbPqqvNS7KvmEN_Q&s",
+      description:
+        "Things Fall Apart follows the story of Okonkwo, a revered member of a native tribe, as his life is torn apart by the negative effects of colonialism, leaving him eventually dead by suicide."
+    },
+    {
+      id: 3,
+      title: "Augustown",
+      author: "Kei Miller",
+      rating: "★★★★★",
+      category: "Fiction",
+      image: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1478980712i/28447227.jpg",
+      description:
+        "Augustown is a magical and haunting novel set in the underbelly of Jamaica. Ma Taffy may be blind but she sees everything."
+    },
+    {
+      id: 4,
+      title: "The Republic",
+      author: "Plato",
+      rating: "★★★☆☆",
+      category: "Philosophy",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHvrK05haZ9PG1KkTFi4Bsvxef1lkCklMcOw&s",
+      description:
+        "The Republic by Plato is a text that describes the importance of being just in the world, and by being just, one is happy. It describes an ideal city and a way through which a just and philosophical governance can create happiness."
+    }
+  ];
+  
+  const [books, setBooks] = useState(initialBooksState);
 
   const appendBook = (newBookTitle, newAuthor, newRating, newImage, newDate, newDescrip, newCat, newRead, newFav) => {
     const newBook = {
@@ -28,7 +67,7 @@ const App = () => {
   };
   return (
     <div className="app">
-      <h1 className="title">React Forms! 📝</h1>
+      <h1 className="title">Book Reviews 📝</h1>
       <AddBook appendBook={appendBook} />
       <BookList books={books} />
     </div>
