@@ -3,13 +3,14 @@ import { createRoot } from "react-dom/client";
 import "./style.css";
 import AddBook from "./components/AddBook";
 import BookList from "./components/BookList";
+import BookCard from "./components/BookCard";
 
 const App = () => {
-  const initialBooksState = [{ id: 1, title: "Babel", author: "person", rating: 2, category: "Poetry" },
+  {/*const initialBooksState = [{ id: 1, title: "Babel", author: "person", rating: 2, category: "Poetry" },
     { id: 2, category: "Poetry", title: "House of the Spirits", author: "person", rating: 2, category: "Poetry" },
     { id: 3, title: "100 Years of Solitude", author: "person", rating: 2, category: "Poetry" },
-    { id: 4, title: "Pride and Prejudice", author: "person", rating: 2, category: "Poetry" },];
-  const [books, setBooks] = useState(initialBooksState);
+    { id: 4, title: "Pride and Prejudice", author: "person", rating: 2, category: "Poetry" },];*/}
+  const [books, setBooks] = useState([]);
 
   const appendBook = (newBookTitle, newAuthor, newRating, newImage, newDate, newDescrip, newCat, newRead, newFav) => {
     const newBook = {

@@ -30,7 +30,7 @@ const AddBook = ({ appendBook }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("title", title);
-    appendBook(title,author,rating,image,published,description,category);
+    appendBook(title,author,rating,image,published,description,category,isRead,isFav);
     clearForm();
   };
 
@@ -52,8 +52,12 @@ const AddBook = ({ appendBook }) => {
 
   const handleRatingChange = (event) => {
     setDirty(true);
-    //console.log(event.target.value);
-    setRating(event.target.value);
+    let stars = "☆☆☆☆☆";
+    let starArray = stars.split("");
+    for (let i = 0; i < parseInt(event.target.value); i++){
+      starArray[i] = "★";
+    }
+    setRating(starArray.join(""));
   }
 
   const handleImageChange = (e) => {
@@ -78,16 +82,12 @@ const AddBook = ({ appendBook }) => {
 
   const handleReadChange = (e) => {
     setDirty(true);
-    if (e.target.value === "yes"){
-      setIsRead(true);
-    }
+    setIsRead(e.target.checked);
   }
 
   const handleFavChange = (e) => {
     setDirty(true);
-    if (e.target.value === "yes"){
-      setIsFav(true);
-    }
+    setIsFav(e.target.checked);
   }
 
   const clearForm = () => {
@@ -98,6 +98,8 @@ const AddBook = ({ appendBook }) => {
     setPublished("");
     setDescription("");
     setCategory("");
+    setIsRead(false);
+    setIsFav(false);
   };
 
   return (
@@ -165,12 +167,12 @@ const AddBook = ({ appendBook }) => {
         onChange={handleReadChange}
       />*/}
       <label>
-      <input type="radio" name="isRead" value={isRead} onChange={handleReadChange}/>
-        Read?
+      Read?
+      <input type="checkbox" name="isRead" checked={isRead} onChange={handleReadChange}/>
       </label>
       <label>
-      <input type="radio" name="isRead" value={isFav} onChange={handleFavChange}/>
-        Favorite?
+      Favorite?
+      <input type="checkbox" name="isFav" checked={isFav} onChange={handleFavChange}/>
       </label>
       {/*<input
         name= "isFav"
