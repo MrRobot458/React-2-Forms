@@ -20,7 +20,7 @@ const AddBook = ({ appendBook }) => {
   const [rating, setRating] = useState("0");
   const [image, setImage] = useState("");
   const [published, setPublished] = useState("");
-  const [description,setDescription] = useState("");
+  const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [isRead, setIsRead] = useState(false);
   const [isFav, setIsFav] = useState(false);
@@ -30,14 +30,14 @@ const AddBook = ({ appendBook }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("title", title);
-    appendBook(title,author,rating,image,published,description,category);
+    appendBook(title, author, rating, image, published, description, category);
     clearForm();
   };
 
   const handleTitleChange = (event) => {
     setDirty(true);
-    // Let's make sure the title has at least 4 characters in it
     setTitle(event.target.value);
+    // Let's make sure the title has at least 4 characters in it
     if (title.length < 4) {
       setTitleErrors(["title must have at least 4 characters"]);
     } else {
@@ -78,14 +78,14 @@ const AddBook = ({ appendBook }) => {
 
   const handleReadChange = (e) => {
     setDirty(true);
-    if (e.target.value === "yes"){
+    if (e.target.value === "yes") {
       setIsRead(true);
     }
   }
 
   const handleFavChange = (e) => {
     setDirty(true);
-    if (e.target.value === "yes"){
+    if (e.target.value === "yes") {
       setIsFav(true);
     }
   }
@@ -110,43 +110,40 @@ const AddBook = ({ appendBook }) => {
         value={title}
         onChange={handleTitleChange}
       />
-      <input 
-        name= "author"
-        type="text" 
+      <input
+        name="author"
+        type="text"
         required
         placeholder="Author"
         value={author}
         onChange={handleAuthorChange}
       />
-      <input 
-        name= "image"
+      <input
+        name="image"
         type="url"
         placeholder="Image URL"
         value={image}
         onChange={handleImageChange}
       />
-      <input 
-        name= "published"
+      <input
+        name="published"
         type="date"
         value={published}
         onChange={handleDateChange}
       />
-      <input 
-        name= "description"
+      <input
+        name="description"
         type="text"
         value={description}
         onChange={handleDescriptionChange}
       />
-      <select
-        name = "rating"
-        onChange={handleRatingChange}
-      >
-          <option value="0" disabled>Select Rating</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+      <select name="rating" onChange={handleRatingChange}>
+        <option value="0" disabled>Select Rating</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
       </select>
       <select name="category" onChange={handleCategoryChange}>
         <option value="Fiction">Fiction</option>
@@ -165,11 +162,11 @@ const AddBook = ({ appendBook }) => {
         onChange={handleReadChange}
       />*/}
       <label>
-      <input type="radio" name="isRead" value={isRead} onChange={handleReadChange}/>
+        <input type="radio" name="isRead" value={isRead} onChange={handleReadChange} />
         Read?
       </label>
       <label>
-      <input type="radio" name="isRead" value={isFav} onChange={handleFavChange}/>
+        <input type="radio" name="isRead" value={isFav} onChange={handleFavChange} />
         Favorite?
       </label>
       {/*<input
